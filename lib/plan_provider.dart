@@ -7,9 +7,7 @@ class PlanProvider extends InheritedWidget {
   PlanProvider({super.key, required super.child});
 
   @override
-  bool updateShouldNotify(covariant InheritedWidget oldWidget) {
-    return false;
-  }
+  bool updateShouldNotify(covariant InheritedWidget oldWidget) => false;
 
   static Plan of(BuildContext context) {
     final provider = context.dependOnInheritedWidgetOfExactType<PlanProvider>();
