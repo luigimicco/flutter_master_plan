@@ -1,16 +1,17 @@
 import 'package:flutter/cupertino.dart';
-
+import './controllers/plan_controller.dart';
 import './models/data_layer.dart';
 
 class PlanProvider extends InheritedWidget {
-  final List<Plan> _plans = [];
+  final _controller = PlanController();
   PlanProvider({super.key, required super.child});
 
   @override
   bool updateShouldNotify(covariant InheritedWidget oldWidget) => false;
 
-  static List<Plan> of(BuildContext context) {
-    final provider = context.dependOnInheritedWidgetOfExactType<PlanProvider>();
-    return provider!._plans;
+  static PlanController of(BuildContext context) {
+    PlanProvider? provider =
+        context.dependOnInheritedWidgetOfExactType<PlanProvider>();
+    return provider!._controller;
   }
 }
