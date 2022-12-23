@@ -3,19 +3,17 @@ import './plan_provider.dart';
 import './views/plan_creator_screen.dart';
 
 void main() {
-  runApp(const MasterPlan());
+  runApp(PlanProvider(child: const MasterPlanApp()));
 }
 
-class MasterPlan extends StatelessWidget {
-  const MasterPlan({super.key});
+class MasterPlanApp extends StatelessWidget {
+  const MasterPlanApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return PlanProvider(
-      child: MaterialApp(
-        theme: ThemeData(primarySwatch: Colors.purple),
-        home: const PlanCreatorScreen(),
-      ),
+    return MaterialApp(
+      theme: ThemeData(primarySwatch: Colors.purple),
+      home: const PlanCreatorScreen(),
     );
   }
 }

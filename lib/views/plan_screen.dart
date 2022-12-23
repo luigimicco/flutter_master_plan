@@ -48,9 +48,9 @@ class _PlanScreenState extends State<PlanScreen> {
     return FloatingActionButton(
         child: const Icon(Icons.add),
         onPressed: () {
-          setState(() {
-            plan.tasks.add(Task());
-          });
+          final controller = PlanProvider.of(context);
+          controller.createNewTask(plan);
+          setState(() {});
         });
   }
 
@@ -63,21 +63,31 @@ class _PlanScreenState extends State<PlanScreen> {
   }
 
   Widget _buildTaskTile(Task task) {
-    return ListTile(
-        leading: Checkbox(
-            value: task.complete,
-            onChanged: (selected) {
+    return Dismissible(
+      key: ValueKey(plan),
+      background: Container(color: Colors.red),
+      direction: DismissDirection.endToStart,
+      onDismissed: (_) {
+        final controller = PlanProvider.of(context);
+        controller.deleteTask(plan, task);
+        setState(() {});
+      },
+      child: ListTile(
+          leading: Checkbox(
+              value: task.complete,
+              onChanged: (selected) {
+                setState(() {
+                  task.complete = selected ?? false;
+                });
+              }),
+          title: TextFormField(
+            initialValue: task.description,
+            onChanged: (text) {
               setState(() {
-                task.complete = selected ?? false;
+                task.description = text;
               });
-            }),
-        title: TextFormField(
-          initialValue: task.description,
-          onChanged: (text) {
-            setState(() {
-              task.description = text;
-            });
-          },
-        ));
+            },
+          )),
+    );
   }
 }
