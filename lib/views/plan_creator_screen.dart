@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_master_plan/plan_provider.dart';
 import 'package:flutter_master_plan/views/plan_screen.dart';
 
-import '../models/plan.dart';
-
 class PlanCreatorScreen extends StatefulWidget {
   const PlanCreatorScreen({super.key});
 

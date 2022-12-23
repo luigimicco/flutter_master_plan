@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import './controllers/plan_controller.dart';
-import './models/data_layer.dart';
 
 class PlanProvider extends InheritedWidget {
   final _controller = PlanController();
