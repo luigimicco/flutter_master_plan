@@ -64,7 +64,7 @@ class _PlanScreenState extends State<PlanScreen> {
 
   Widget _buildTaskTile(Task task) {
     return Dismissible(
-      key: ValueKey(plan),
+      key: ValueKey(task),
       background: Container(color: Colors.red),
       direction: DismissDirection.endToStart,
       onDismissed: (_) {
